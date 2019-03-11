@@ -11,7 +11,14 @@ mongo = PyMongo(app)
 
 recipes = mongo.db.recipes
 
+@app.route('/')
+@app.route('/get_recipes')
+def get_recipes():
+    return render_template('index.html', recipes = mongo.db.recipes.find())
 
+@app.route('/show_recipe/<recipe_id>')
+def show_recipe(recipe_id):
+    return render_template('recipe.html', recipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
