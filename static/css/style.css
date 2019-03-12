@@ -1,6 +1,7 @@
 .width {
     width: 100%;
     height: auto;
+    max-height: 35rem;
     overflow: hidden;
     margin: 1.5rem 0rem 1.5rem 0rem;
 }
@@ -8,6 +9,12 @@ img {
     width: 100%;
     height: 100%;
 }
-.man-flex {
+.cent-align {
     text-align: center;
+}
+.flex-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 }
