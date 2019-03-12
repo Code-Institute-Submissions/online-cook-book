@@ -1,15 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <!--TEST-->
-    {%for recipe in recipes%}
-    <h1>{{recipes.author.name}}</h1>
-    {%endfor%}
-</body>
-</html>
+{%extends 'base.html'%}
+    {%block content%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 man-flex">
+            <h1>{{recipes.meal_name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="width">
+            <img src="{{recipes.url_img}}"></img>
+        </div>
+    </div>
+    <div class="row">
+        <div class="man-flex">
+            <span>{{recipes.macros.calories}} |</span>
+            <span>{{recipes.macros.proteins}} proteins |</span>
+            <span>{{recipes.macros.carbs}} carbs |</span>
+            <span>{{recipes.macros.fat}} fat</span>
+        </div>
+    </div>
+    <div class="row">
+        <p>{{recipes.description}}</p>
+    </div>
+    <br>
+    <div class="row">
+        <p>{{recipes.ingredients}}</p>
+        <br>
+        <p>{{recipes.preparation}}</p>
+        <br>
+    </div>
+    <div class="row">
+        <span>{{recipes.author.name}}</span>
+        <span>{{recipes.author.last_name}}</span>
+    </div>
+</div>
+{%endblock%}
