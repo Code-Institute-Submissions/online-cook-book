@@ -20,22 +20,22 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" class="text-dark" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" class="text-dark" href="{{url_for('get_recipes')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" class="text-dark" href="#">Features</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" class="text-dark"  href="#">Contribute</a>
+                    <a class="nav-link" class="text-dark"  href="{{url_for('contribute_recipes')}}">Contribute</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Courses
         </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" class="text-dark" href="#">Breakfast</a>
-                        <a class="dropdown-item" class="text-dark" href="#">Lunch</a>
-                        <a class="dropdown-item" class="text-dark" href="#">Dinner</a>
+                        <a class="dropdown-item" class="text-dark" href="{{url_for('breakfast_recipes')}}">Breakfast</a>
+                        <a class="dropdown-item" class="text-dark" href="{{url_for('lunch_recipes')}}">Lunch</a>
+                        <a class="dropdown-item" class="text-dark" href="{{url_for('dinner_recipes')}}">Dinner</a>
                     </div>
                 </li>
             </ul>

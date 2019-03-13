@@ -19,6 +19,28 @@ def get_recipes():
 @app.route('/show_recipe/<recipe_id>')
 def show_recipe(recipe_id):
     return render_template('recipe.html', recipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
+    
+@app.route('/breakfast_recipes')
+def breakfast_recipes():
+    return render_template('breakfast.html', recipes = mongo.db.recipes.find())
+    
+@app.route('/lunch_recipes')
+def lunch_recipes():
+    return render_template('lunch.html', recipes = mongo.db.recipes.find())
+    
+@app.route('/dinner_recipes')
+def dinner_recipes():
+    return render_template('dinner.html', recipes = mongo.db.recipes.find())
+   
+@app.route('/contribute_recipes')
+def contribute_recipes():
+    return render_template('contribute.html', recipes= mongo.db.recipes.find())
+
+@app.route('/add_recipes', methods=['POST'])
+def add_recipes():
+    con_recipe = mongo.db.recipes
+    con_recipe.insert_one(request.form.to_dict())
+    return redirect(url_for('get_recipes'))
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

@@ -1,0 +1,21 @@
+{%extends 'base.html'%} {%block content%}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-md-12 cent-align">
+            <h1>Welcome to GYM FOOD</h1>
+            <p>A bodybuilders diet doesn't have to be all about cooked chikcen breasts and brocolli. You can easily make healthy recipes that also taste delicious! Check our diet friendly foods here at GYM FOOD, enjoy!</p>
+        </div>
+    </div>
+    <div class="row">
+        {%for recipe in recipes%} {%if recipe.category_course == 'lunch'%}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 width">
+            <a href="{{url_for('show_recipe', recipe_id=recipe._id)}}">
+                <img src="{{recipe.url_img}}"></img>
+            </a>
+        </div>
+        {%endif%} {%endfor%}
+    </div>
+</div>
+
+{%endblock%}
