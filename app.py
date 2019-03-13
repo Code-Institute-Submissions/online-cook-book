@@ -18,7 +18,8 @@ def get_recipes():
 
 @app.route('/show_recipe/<recipe_id>')
 def show_recipe(recipe_id):
-    return render_template('recipe.html', recipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)}))
+    recipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+    return render_template('recipe.html', recipes=recipes)
     
 @app.route('/breakfast_recipes')
 def breakfast_recipes():
@@ -39,7 +40,24 @@ def contribute_recipes():
 @app.route('/add_recipes', methods=['POST'])
 def add_recipes():
     con_recipe = mongo.db.recipes
-    con_recipe.insert_one(request.form.to_dict())
+    con_recipe.insert_one({
+        "meal_name": request.form.get("meal_name"),
+        "preparation": request.form.get("preparation"),
+        "description": request.form.get("description"),
+        "author": {
+                "last_name": request.form.get("last_name"),
+                "name": request.form.get("name")
+            },
+        "category_course": request.form.get("category_course"),
+        "ingredients":request.form.get("ingredients"),
+        "macros":{
+                    "fat":request.form.get("fat"),
+                    "calories":request.form.get("calories"),
+                    "proteins":request.form.get("proteins"),
+                    "carbs":request.form.get("carbs")
+                },
+        "url_img": request.form.get("url_img")
+})
     return redirect(url_for('get_recipes'))
 
 if __name__ == '__main__':
