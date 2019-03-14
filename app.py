@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, redirect, request, url_for
+from flask import Flask, render_template, redirect, request, url_for, session
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 
@@ -56,9 +56,37 @@ def add_recipes():
                     "proteins":request.form.get("proteins"),
                     "carbs":request.form.get("carbs")
                 },
-        "url_img": request.form.get("url_img")
+        "url_img": request.form.get("url_img"),
+        "upvote": 1,
+        "downvote": 1
 })
-    return redirect(url_for('get_recipes'))
+    return redirect(url_for('confirm_recipes'))
+
+@app.route('/confirm_recipes/<recipe_id>')
+def confirm_recipes(recipe_id):
+    return render_template('confirm.html', recipes=mongo.db.recipes.find_one({"_id":ObjectId(recipe_id)}))
+    
+"""@app.route('/update_recipe/<recipe_id>')
+def update_recipe(recipe_id):
+    recipes = mongo.db.recipes
+    recipes.update({"_id": ObjectId(recipe_id)}, { 
+        "meal_name": request.form.get("meal_name"),
+        "preparation": request.form.get("preparation"),
+        "description": request.form.get("description"),
+        "author": {
+                "last_name": request.form.get("last_name"),
+                "name": request.form.get("name")
+            },
+        "category_course": request.form.get("category_course"),
+        "ingredients":request.form.get("ingredients"),
+        "macros":{
+                    "fat":request.form.get("fat"),
+                    "calories":request.form.get("calories"),
+                    "proteins":request.form.get("proteins"),
+                    "carbs":request.form.get("carbs")
+                },
+        "url_img": request.form.get("url_img")
+    })"""
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
