@@ -9,7 +9,7 @@
     <div class="row">
         {%for recipe in recipes%}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 width">
-            <a href="{{url_for('show_recipe', recipe_id=recipe._id)}}">
+            <a href="{{url_for('edit_page_form', recipe_id=recipe._id)}}">
                 <img src="{{recipe.url_img}}"></img>
             </a>
         </div>
