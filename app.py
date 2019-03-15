@@ -74,8 +74,8 @@ def edit_page_form(recipe_id):
 @app.route('/edit_recipe/<recipe_id>', methods=["POST"])
 def edit_recipe(recipe_id):
     recipes = mongo.db.recipes
-    recipes.update({"_id": ObjectId(recipe_id)}, 
-    {
+    recipes.update({"_id": ObjectId(recipe_id)},
+        {
         "meal_name": request.form.get("meal_name"),
         "preparation": request.form.get("preparation"),
         "description": request.form.get("description"),
@@ -91,16 +91,12 @@ def edit_recipe(recipe_id):
             "proteins": request.form.get("proteins"),
             "carbs": request.form.get("carbs")
         },
-        "url_img": request.form.get("url_img")
-    })
-    return redirect(url_for('get_recipes'))
+        "url_img": request.form.get("url_img"),
+        "upvote": 1,
+        "downvote": 1
+        })
+    return redirect(url_for('edit_page'))
     
-@app.route('/upvote/<recipe_id>', methods=["POST"])
-def upvote(recipe_id):
-    recipes=mongo.db.recipes
-    recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": request.form("")}})
-    return redirect(url_for("get_recipes"))
-
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
