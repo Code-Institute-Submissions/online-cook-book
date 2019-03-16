@@ -14,7 +14,7 @@ recipes = mongo.db.recipes
 @app.route('/')
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template('index.html', recipes = mongo.db.recipes.find())
+    return render_template('index.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
 
 @app.route('/show_recipe/<recipe_id>')
 def show_recipe(recipe_id):
@@ -23,15 +23,15 @@ def show_recipe(recipe_id):
     
 @app.route('/breakfast_recipes')
 def breakfast_recipes():
-    return render_template('breakfast.html', recipes = mongo.db.recipes.find())
+    return render_template('breakfast.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
     
 @app.route('/lunch_recipes')
 def lunch_recipes():
-    return render_template('lunch.html', recipes = mongo.db.recipes.find())
+    return render_template('lunch.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
     
 @app.route('/dinner_recipes')
 def dinner_recipes():
-    return render_template('dinner.html', recipes = mongo.db.recipes.find())
+    return render_template('dinner.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
    
 @app.route('/contribute_recipes')
 def contribute_recipes():
@@ -74,7 +74,7 @@ def edit_page_form(recipe_id):
 def edit_recipe(recipe_id):
     recipes = mongo.db.recipes
     recipes.update({"_id": ObjectId(recipe_id)},
-        {
+        {"$set": {
         "meal_name": request.form.get("meal_name"),
         "preparation": request.form.get("preparation"),
         "description": request.form.get("description"),
@@ -90,9 +90,8 @@ def edit_recipe(recipe_id):
             "proteins": request.form.get("proteins"),
             "carbs": request.form.get("carbs")
         },
-        "url_img": request.form.get("url_img"),
-        "upvote": 1
-        })
+        "url_img": request.form.get("url_img")
+        }})
     return redirect(url_for('edit_page'))
 
 @app.route('/upvote/<recipe_id>', methods=["POST"])
@@ -100,6 +99,7 @@ def upvote(recipe_id):
     recipes=mongo.db.recipes
     recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": 1}})
     return redirect(url_for("get_recipes"))
+
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
