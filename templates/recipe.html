@@ -40,5 +40,8 @@
     <div class="like">
         <a class="show"></a>
     </div>
+     <form method="POST" action="{{url_for('upvote', recipe_id=recipes._id)}}">
+        <button type="submit" name="upvote">Like {{recipes.upvote}}</button>
+    </form>
 </div>
 {%endblock%}

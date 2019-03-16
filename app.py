@@ -57,8 +57,7 @@ def add_recipes():
                     "carbs":request.form.get("carbs")
                 },
         "url_img": request.form.get("url_img"),
-        "upvote": 1,
-        "downvote": 1
+        "upvote": 1
 })
     return redirect(url_for('get_recipes'))
 
@@ -92,11 +91,16 @@ def edit_recipe(recipe_id):
             "carbs": request.form.get("carbs")
         },
         "url_img": request.form.get("url_img"),
-        "upvote": 1,
-        "downvote": 1
+        "upvote": 1
         })
     return redirect(url_for('edit_page'))
-    
+
+@app.route('/upvote/<recipe_id>', methods=["POST"])
+def upvote(recipe_id):
+    recipes=mongo.db.recipes
+    recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": 1}})
+    return redirect(url_for("get_recipes"))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
