@@ -1,7 +1,46 @@
+/*-------------------mobile first addtional styling to bootstrap grid----------------------*/
+body {
+    background-color: #fff5ee;
+}
+nav {
+    background-image: url("https://pictures.ozy.com/pictures/600x337/9/0/6/115906_pexelsphoto557659.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+nav a {
+    color: #ffffff;
+    transition: all .2s ease-out;
+}
+nav a:hover {
+    color: #ffffff;
+    background-color: #808080;
+    border-radius: 15%;
+    transform: scale(1,1);
+}
+form {
+    color: seashell;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.margin {
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/*----opc gives a bg image to the two forms (contribute.html and edit_page_form.html and also adjusts their margin and padding-----*/
+.opc {
+    margin-top: 5rem;
+    padding: 5rem;
+    background-image: url("https://pictures.ozy.com/pictures/600x337/9/0/6/115906_pexelsphoto557659.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5rem;
+}
+
+/*------width adjusts the size of the images on the home and edit page so that they always fit their element----*/
 .width {
     width: 100%;
     height: auto;
-    max-height: 35rem;
+    max-height: 10rem;
     overflow: hidden;
     margin: 1.5rem 0rem 1.5rem 0rem;
 }
@@ -9,12 +48,70 @@ img {
     width: 100%;
     height: 100%;
 }
+
+/*------width-recipe-page adjusts the size of the images on the recipe.html page so that they always fit their element but here the max-size is higher----*/
+.width-recipe-page {
+    width: 100%;
+    height: auto;
+    max-height: 35rem;
+    overflow: hidden;
+    margin: 1.5rem 0rem 1.5rem 0rem;
+}
+
+.radius {
+    border-radius: 25%;
+}
+
+.trans {
+    transition: all .2s ease-in-out;
+}
+.trans:hover {
+    transform: scale(1.1);
+}
+
 .cent-align {
+    text-align: center;
+}
+.cent-align-home {
     text-align: center;
 }
 .flex-align {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    align-items: center;
+}
+
+/*---like and dislike button styling starts here----*/
+.round {
+    color: seashell;
+    border-radius: 25%;
+    transition: all .2s ease-in-out;
+    margin: 0;
+}
+.round:hover {
+    transform: scale(1.1);
+}
+.blue {
+    background-color: #000099;
+}
+.red {
+    background-color: #cc0000;
+}
+/*---like and dislike button styling ends here----*/
+
+
+a div span{
+    text-decoration: none;
+    color: #000000;
+}
+.margin-items-home {
+    margin: 1.5rem;
+}
+
+/*--------media queries-------------*/
+@media(min-width:768px) {
+    .cent-align {
+        text-align: left;
+    }
 }

@@ -100,7 +100,12 @@ def upvote(recipe_id):
     recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": 1}})
     return redirect(url_for("get_recipes"))
 
-
+@app.route('/downvote/<recipe_id>', methods=["POST"])
+def downvote(recipe_id):
+    recipes=mongo.db.recipes
+    recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": -1}})
+    return redirect(url_for("get_recipes"))
+    
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),

@@ -1,18 +1,18 @@
-{%extends 'base.html'%}
-    {%block content%}
+{%extends 'base.html'%} {%block content%}
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-12 cent-align">
-            <h1>{{recipes.meal_name}}</h1>
+        <div class="col-md-12">
+            <h1 class="margin cent-align">{{recipes.meal_name}}</h1>
         </div>
     </div>
     <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 width">
+        <div class="col-xs-12 col-sm-6 col-md-4 width-recipe-page">
             <img src="{{recipes.url_img}}"></img>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 flex-align">
+        <div class="col-xs-12 col-sm-6 col-md-8 cent-align">
             <div class="row">
-                <div class="col-md-12 cent-align">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 margin">
+                    <h5>Macronutritients</h5>
                     <span>{{recipes.macros.calories}} calories |</span>
                     <span>{{recipes.macros.proteins}} proteins |</span>
                     <span>{{recipes.macros.carbs}} carbs |</span>
@@ -20,28 +20,50 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 cent-align">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <h5>Description</h5>
                     <p>{{recipes.description}}</p>
                 </div>
             </div>
         </div>
     </div>
     <br>
-    <div class="row cent-align">
-        <p>{{recipes.ingredients}}</p>
-        <br>
-        <p>{{recipes.preparation}}</p>
-        <br>
+    <div class="row margin cent-align">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h5>Ingredients</h5>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <p>{{recipes.ingredients}}</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h5>Instructions</h5>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <p>{{recipes.preparation}}</p>
+        </div>
     </div>
-    <div class="row cent-align">
-        <span>{{recipes.author.name}}</span>
-        <span>{{recipes.author.last_name}}</span>
+    <div class="row margin cent-align">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <h5>Author</h5>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <span>{{recipes.author.name}}</span>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <span>{{recipes.author.last_name}}</span>
+        </div>
     </div>
-    <div class="like">
-        <a class="show"></a>
+    <div class="row margin cent-align">
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <form method="POST" action="{{url_for('upvote', recipe_id=recipes._id)}}">
+                <button class="round blue" type="submit" name="upvote">Like</button>
+            </form>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+            <form method="POST" action="{{url_for('downvote', recipe_id=recipes._id)}}">
+                <button class="round red" type="submit" name="downvote">Dislike</button>
+            </form>
+        </div>
     </div>
-     <form method="POST" action="{{url_for('upvote', recipe_id=recipes._id)}}">
-        <button type="submit" name="upvote">Like {{recipes.upvote}}</button>
-    </form>
 </div>
 {%endblock%}

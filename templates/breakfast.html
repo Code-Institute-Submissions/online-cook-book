@@ -1,16 +1,19 @@
 {%extends 'base.html'%} {%block content%}
 
-<div class="container-fluid">
+<div class="container-fluid cent-align-home">
     <div class="row">
-        <div class=" col-md-12 cent-align">
-            <h1>Welcome to GYM FOOD</h1>
+        <div class=" col-md-12">
+            <h1 class="margin">Pick Your Breakfast!</h1>
         </div>
     </div>
     <div class="row">
         {%for recipe in recipes%} {%if recipe.category_course == 'breakfast'%}
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 width">
+           <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 col-xl-2 trans margin-items-home">
             <a href="{{url_for('show_recipe', recipe_id=recipe._id)}}">
-                <img src="{{recipe.url_img}}"></img>
+                <div>
+                    <img class="width radius" src="{{recipe.url_img}}"></img>
+                    <span>{{recipe.meal_name}}</span>
+                </div>
             </a>
         </div>
         {%endif%} {%endfor%}

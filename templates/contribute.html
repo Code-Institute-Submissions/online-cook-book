@@ -1,5 +1,7 @@
 {%extends 'base.html'%} {%block content%}
+<div class="container opc">
 <form action="{{url_for('add_recipes')}}" method='POST'>
+    <h1 class="margin">Add a healthy recipe to our website</h1>
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="name">FIRST NAME</label>
@@ -60,4 +62,5 @@
     </div>
     <button type="submit" class="btn btn-primary" name="action">POST RECIPE</button>
 </form>
+</div>
 {%endblock%}
