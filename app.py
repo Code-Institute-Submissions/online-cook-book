@@ -63,8 +63,17 @@ def add_recipes():
 
 @app.route('/edit_page')
 def edit_page():
-    return render_template('edit_page.html', recipes = mongo.db.recipes.find())
+    return render_template('edit_page.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
 
+@app.route('/delete_page')
+def delete_page():
+    return render_template('delete_page.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
+    
+@app.route('/delete_recipe/<recipe_id>')
+def delete_recipe(recipe_id):
+    mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    return redirect(url_for('delete_page'))
+    
 @app.route('/edit_page_form/<recipe_id>')
 def edit_page_form(recipe_id):
     return render_template('edit_page_form.html', recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)}))

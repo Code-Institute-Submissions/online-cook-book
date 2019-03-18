@@ -54,12 +54,12 @@
         </div>
     </div>
     <div class="row margin cent-align">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="col-xs-12 col-sm-1 col-md-1 col-lg-1 col-xl-1 margin-buttons">
             <form method="POST" action="{{url_for('upvote', recipe_id=recipes._id)}}">
                 <button class="round blue" type="submit" name="upvote">Like</button>
             </form>
         </div>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <div class="col-xs-12 col-sm-11 col-md-11 col-lg-11 col-xl-11 ">
             <form method="POST" action="{{url_for('downvote', recipe_id=recipes._id)}}">
                 <button class="round red" type="submit" name="downvote">Dislike</button>
             </form>

@@ -1,0 +1,22 @@
+{%extends 'base.html'%} {%block content%}
+<div class="container-fluid cent-align-home">
+    <div class="row">
+        <div class=" col-md-12">
+            <h1 class="margin">Delete A Recipe</h1>
+        </div>
+    </div>
+    <div class="row">
+        {%for recipe in recipes%}
+        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 trans margin-items-home">
+                <div>
+                    <img class="width radius" src="{{recipe.url_img}}"></img>
+                    <a href="{{url_for('delete_recipe', recipe_id=recipe._id)}}">
+                    <span><strong>Delete</strong> {{recipe.meal_name}}</span>
+                     </a>
+                </div>
+           
+        </div>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

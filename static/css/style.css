@@ -25,7 +25,9 @@ form {
     margin-top: 2.5rem;
     margin-bottom: 2.5rem;
 }
-
+.margin-buttons {
+    margin-bottom:1rem;
+}
 /*----opc gives a bg image to the two forms (contribute.html and edit_page_form.html and also adjusts their margin and padding-----*/
 .opc {
     margin-top: 5rem;
@@ -105,6 +107,10 @@ a div span{
     text-decoration: none;
     color: #000000;
 }
+a span {
+    text-decoration: none;
+    color: #000000;
+}
 .margin-items-home {
     margin: 1.5rem;
 }
@@ -113,7 +119,6 @@ footer {
     height: 5rem;
     margin-top: 5rem;
     padding-top: 1.5rem;
-    padding-left: 1rem;
     background-image: url("https://pictures.ozy.com/pictures/600x337/9/0/6/115906_pexelsphoto557659.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
