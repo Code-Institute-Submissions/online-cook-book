@@ -108,7 +108,16 @@ a div span{
 .margin-items-home {
     margin: 1.5rem;
 }
-
+footer {
+    color: #ffffff;
+    height: 5rem;
+    margin-top: 5rem;
+    padding-top: 1.5rem;
+    padding-left: 1rem;
+    background-image: url("https://pictures.ozy.com/pictures/600x337/9/0/6/115906_pexelsphoto557659.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 /*--------media queries-------------*/
 @media(min-width:768px) {
     .cent-align {
