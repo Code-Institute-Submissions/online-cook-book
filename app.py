@@ -39,26 +39,36 @@ def show_recipe(recipe_id):
     if g.user:
         recipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
         return render_template('recipe.html', recipes=recipes)
+    else:
+        return redirect(url_for("session_user"))
     
 @app.route('/breakfast_recipes')
 def breakfast_recipes():
     if g.user:
         return render_template('breakfast.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
+    else:
+        return redirect(url_for("session_user"))
     
 @app.route('/lunch_recipes')
 def lunch_recipes():
     if g.user:
         return render_template('lunch.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
+    else:
+        return redirect(url_for("session_user"))
     
 @app.route('/dinner_recipes')
 def dinner_recipes():
     if g.user:
         return render_template('dinner.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
+    else:
+        return redirect(url_for("session_user"))
    
 @app.route('/contribute_recipes')
 def contribute_recipes():
     if g.user:
         return render_template('contribute.html', recipes= mongo.db.recipes.find())
+    else:
+        return redirect(url_for("session_user"))
 
 @app.route('/add_recipes', methods=['POST'])
 def add_recipes():
@@ -84,27 +94,37 @@ def add_recipes():
             "upvote": 1
         })
         return redirect(url_for('get_recipes'))
+    else:
+        return redirect(url_for("session_user"))
 
 @app.route('/edit_page')
 def edit_page():
     if g.user:
         return render_template('edit_page.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
+    else:
+        return redirect(url_for("session_user"))
 
 @app.route('/delete_page')
 def delete_page():
     if g.user:
         return render_template('delete_page.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
+    else:
+        return redirect(url_for("session_user"))
     
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
     if g.user:
         mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
         return redirect(url_for('delete_page'))
+    else:
+        return redirect(url_for("session_user"))
     
 @app.route('/edit_page_form/<recipe_id>')
 def edit_page_form(recipe_id):
     if g.user:
         return render_template('edit_page_form.html', recipes = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)}))
+    else:
+        return redirect(url_for("session_user"))
 
 #edit recipe function
 @app.route('/edit_recipe/<recipe_id>', methods=["POST"])
@@ -131,6 +151,8 @@ def edit_recipe(recipe_id):
             "url_img": request.form.get("url_img")
             }})
         return redirect(url_for('edit_page'))
+    else:
+        return redirect(url_for("session_user"))
 
 @app.route('/upvote/<recipe_id>', methods=["POST"])
 def upvote(recipe_id):
@@ -138,6 +160,8 @@ def upvote(recipe_id):
         recipes=mongo.db.recipes
         recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": 1}})
         return redirect(url_for("get_recipes"))
+    else:
+        return redirect(url_for("session_user"))
 
 @app.route('/downvote/<recipe_id>', methods=["POST"])
 def downvote(recipe_id):
@@ -145,6 +169,8 @@ def downvote(recipe_id):
         recipes=mongo.db.recipes
         recipes.update({"_id": ObjectId(recipe_id)},{"$inc": {"upvote": -1}})
         return redirect(url_for("get_recipes"))
+    else:
+        return redirect(url_for("session_user"))
     
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
