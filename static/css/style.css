@@ -107,10 +107,15 @@ a div span{
     text-decoration: none;
     color: #000000;
 }
+a:hover{
+    text-decoration: none;
+    color: #000000;
+}
 a span {
     text-decoration: none;
     color: #000000;
 }
+
 .margin-items-home {
     margin: 1.5rem;
 }

@@ -1,0 +1,15 @@
+{%extends 'base.html'%} {%block content%}
+<div class="container opc">
+<form action="{{url_for('get_username')}}" method="post">
+    <h1 class="margin-buttons">Welcome to fitness food!</h1>
+    <p>Pick a username before you go further. This will allow you to like, edit and delte recipes</p>
+    <div class="form-row">
+        <div class="form-group col-md-12 margin">
+            <label for="username">USERNAME</label>
+            <input type="text" class="form-control margin-buttons" id="username" name="username" required>
+            <button type="submit" class="btn btn-primary" name="action">Enter</button>
+        </div>
+    </div>
+</form>
+</div>
+{%endblock%}

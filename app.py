@@ -4,6 +4,7 @@ from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "cook_book"
 app.config["MONGO_URI"] = "mongodb+srv://Geronimo1992:CrazyHorse1992@myfirstcluster-ljwxr.mongodb.net/cook_book?retryWrites=true"
 
@@ -11,7 +12,18 @@ mongo = PyMongo(app)
 
 recipes = mongo.db.recipes
 
-@app.route('/')
+@app.route("/")
+@app.route('/session_user')
+def session_user():
+    return render_template("user.html")
+    
+@app.route('/get_username', methods=["GET", "POST"])
+def get_username():
+    if request.method == "POST":
+        session["username"] = request.form["username"]
+    if "username" in session: 
+        return redirect(url_for("get_recipes"))
+        
 @app.route('/get_recipes')
 def get_recipes():
     return render_template('index.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
