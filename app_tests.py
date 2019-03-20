@@ -27,7 +27,6 @@ class MyCookbook(unittest.TestCase):
     def tearDown(self):
         pass
     
-    
     #Tests can be found here
     """
     #Test OK
@@ -59,22 +58,38 @@ class MyCookbook(unittest.TestCase):
         result = self.app.get('/show_recipe/<recipe_id>')
         self.assertEqual(result.status_code, 302)
     
-    #Test OK
+    #Tests OK
+    def test_status_code(self):
+        result = self.app.get('/breakfast_recipes')
+        self.assertEqual(result.status_code, 200)
+        
     def test_status_code(self):
         result = self.app.get('/breakfast_recipes')
         self.assertEqual(result.status_code, 302)
     
-    #Test OK
+    #Tests OK
+    def test_status_code(self):
+        result = self.app.get('/lunch_recipes')
+        self.assertEqual(result.status_code, 200)
+        
     def test_status_code(self):
         result = self.app.get('/lucnh_recipes')
         self.assertEqual(result.status_code, 302)
     
-    #Test OK
+    #Tests OK
+    def test_status_code(self):
+        result = self.app.get('/dinner_recipes')
+        self.assertEqual(result.status_code, 200)
+        
     def test_status_code(self):
         result = self.app.get('/dinner_recipes')
         self.assertEqual(result.status_code, 302)
     
-    #Test OK
+    #Tests OK
+    def test_status_code(self):
+        result = self.app.get('/contribute_recipes')
+        self.assertEqual(result.status_code, 200)
+    
     def test_status_code(self):
         result = self.app.get('/contribute_recipes')
         self.assertEqual(result.status_code, 302)
