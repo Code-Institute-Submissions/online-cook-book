@@ -133,7 +133,12 @@ class MyCookbook(unittest.TestCase):
     def test_status_code(self):
         result = self.app.post('/downvote/<recipe_id>')
         self.assertEqual(result.status_code, 302)
-        
+    
+    #Test OK
+    def test_status_code(self):
+        result = self.app.get('/show_popular_courses')
+        self.assertEqual(result.status_code, 302)
+    
     #Test OK
     with app.test_client() as c:
         with c.session_transaction() as sess:

@@ -175,7 +175,7 @@ def downvote(recipe_id):
 @app.route('/show_popular_courses')
 def show_popular_courses():
     if g.user:
-        return render_template("chart.html", recipes= mongo.db.recipes.find())
+        return render_template("chart.html", recipes= mongo.db.recipes.find().sort("upvote", -1))
     else:
         return redirect(url_for("session_user"))
 
