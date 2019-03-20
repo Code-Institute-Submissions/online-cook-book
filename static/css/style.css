@@ -128,6 +128,9 @@ footer {
     background-repeat: no-repeat;
     background-size: cover;
 }
+i {
+    font-size: 1.2rem;
+}
 /*--------media queries-------------*/
 @media(min-width:768px) {
     .cent-align {

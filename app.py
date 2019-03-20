@@ -171,7 +171,14 @@ def downvote(recipe_id):
         return redirect(url_for("get_recipes"))
     else:
         return redirect(url_for("session_user"))
-    
+
+@app.route('/show_popular_courses')
+def show_popular_courses():
+    if g.user:
+        return render_template("chart.html", recipes= mongo.db.recipes.find())
+    else:
+        return redirect(url_for("session_user"))
+
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
