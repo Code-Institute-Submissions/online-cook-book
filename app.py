@@ -2,11 +2,14 @@ import os
 from flask import Flask, render_template, redirect, request, url_for, session, g
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId 
+import json 
+from bson import json_util
+from bson.json_util import dumps
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 app.config["MONGO_DBNAME"] = "cook_book"
-app.config["MONGO_URI"] = "mongodb+srv://Geronimo1992:CrazyHorse1992@myfirstcluster-ljwxr.mongodb.net/cook_book?retryWrites=true"
+app.config["MONGO_URI"] = os.getenv('MONGO_URI', 'mongodb://localhost')
 
 mongo = PyMongo(app)
 
@@ -42,7 +45,7 @@ def show_recipe(recipe_id):
     else:
         return redirect(url_for("session_user"))
     
-@app.route('/breakfast_recipes')
+@app.route('/filter_courses?')
 def breakfast_recipes():
     if g.user:
         return render_template('breakfast.html', recipes = mongo.db.recipes.find().sort("upvote", -1))
@@ -175,7 +178,17 @@ def downvote(recipe_id):
 @app.route('/show_popular_courses')
 def show_popular_courses():
     if g.user:
-        return render_template("chart.html", recipes= mongo.db.recipes.find().sort("upvote", -1))
+        recipes= mongo.db.recipes.find().sort("upvote", -1)
+        data = []
+        for recipe in recipes:
+            print(recipe)
+            data.append({'category_course': recipe['category_course']})
+            data.append({'upvote': recipe['upvote']})
+        
+        with open("static/data/data_from_python.json", "w") as write_file:
+            json.dump(data, write_file)
+        
+        return render_template("chart.html")
     else:
         return redirect(url_for("session_user"))
 

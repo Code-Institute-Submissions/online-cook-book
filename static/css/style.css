@@ -115,7 +115,9 @@ a span {
     text-decoration: none;
     color: #000000;
 }
-
+#left {
+    clear: left;
+}
 .margin-items-home {
     margin: 1.5rem;
 }
