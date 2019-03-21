@@ -67,7 +67,7 @@
     <script type="text/javascript" src="static/chart.js"></script>
     <script>
         queue()
-            .defer(d3.json, "static/data/data_from_python.json")
+            .defer(d3.json, "data_from_python.json")
             .await(makeGraphs);
         
         function makeGraphs(error, transactionsData) {

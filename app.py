@@ -94,7 +94,8 @@ def add_recipes():
                     "carbs":request.form.get("carbs")
                     },
             "url_img": request.form.get("url_img"),
-            "upvote": 1
+            "upvote": 1,
+            "user": session["username"]
         })
         return redirect(url_for('get_recipes'))
     else:
@@ -116,8 +117,10 @@ def delete_page():
     
 @app.route('/delete_recipe/<recipe_id>')
 def delete_recipe(recipe_id):
-    if g.user:
-        mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
+    if session['username']:
+        recipes = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+        if session['username'] == recipes['user']:
+            mongo.db.recipes.remove({'_id': ObjectId(recipe_id)})
         return redirect(url_for('delete_page'))
     else:
         return redirect(url_for("session_user"))
@@ -185,9 +188,8 @@ def show_popular_courses():
             data.append({'category_course': recipe['category_course']})
             data.append({'upvote': recipe['upvote']})
         
-        with open("static/data/data_from_python.json", "w") as write_file:
+        with open("data_from_python.json", "w") as write_file:
             json.dump(data, write_file)
-        
         return render_template("chart.html")
     else:
         return redirect(url_for("session_user"))
