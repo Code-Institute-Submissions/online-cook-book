@@ -5,6 +5,7 @@ from bson.objectid import ObjectId
 import json 
 from bson import json_util
 from bson.json_util import dumps
+from pymongo import MongoClient
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -177,20 +178,20 @@ def downvote(recipe_id):
     else:
         return redirect(url_for("session_user"))
 
-@app.route('/show_popular_courses')
-def show_popular_courses():
-    if g.user:
-        recipes= mongo.db.recipes.find().sort("upvote", -1)
-        data = []
-        for recipe in recipes:
-            data.append({'category_course': recipe['category_course']})
-            data.append({'upvote': recipe['upvote']})
-        
-        with open("data_from_python.json", "w") as write_file:
-            json.dump(data, write_file)
-        return render_template("chart.html")
-    else:
-        return redirect(url_for("session_user"))
+@app.route('/chart_page')
+def chart_page():
+    return render_template(('chart.html'))
+    
+@app.route("/cookbook_recipes")
+def cookbook_recipes():
+    FIELDS = {'category_course': True, 'upvote': True, '_id': False}
+    recipes = mongo.db.recipes.find(projection=FIELDS)
+    json_recipes = []
+    for recipe in recipes:
+        json_recipes.append(recipe)
+    json_recipes = json.dumps(json_recipes, default=json_util.default)
+    recipes.close()
+    return json_recipes
 
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),

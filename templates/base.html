@@ -32,7 +32,7 @@
                     <a class="nav-link" href="{{url_for('contribute_recipes')}}">Contribute</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('show_popular_courses')}}"><i class="far fa-chart-bar"></i></a>
+                    <a class="nav-link" href="{{url_for('chart_page')}}"><i class="far fa-chart-bar"></i></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,9 +66,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/queue-async/1.0.7/queue.min.js"></script>
     <script>
         queue()
-            .defer(d3.json, "data_from_python.json")
+            .defer(d3.json, "/cookbook_recipes")
             .await(makeGraphs);
-        
         function makeGraphs(error, transactionsData) {
             var ndx = crossfilter(transactionsData);
             var category_course_dim = ndx.dimension(dc.pluck('category_course'));

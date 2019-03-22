@@ -116,10 +116,16 @@ a span {
     color: #000000;
 }
 #left {
+    margin-top: 2rem;
     clear: left;
+    text-align: center;
+    margin-bottom: 12rem;
 }
 .margin-items-home {
     margin: 1.5rem;
+}
+.margin-bottom {
+    margin-bottom: 12rem;
 }
 footer {
     color: #ffffff;
