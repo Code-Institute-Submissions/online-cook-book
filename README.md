@@ -16,29 +16,29 @@ different from white. Text throughout the website is black and items have a nice
 * When you click on the recipe, you get directed to the details of that recipe which include a, image, description, macronutrients, ingredients, instructions, author name. You can also like and 
 dislike a recipe. This will then rank the recipe on the website dpeneding on the amounts of likes it gets.
 
-Wireframes can be found [here]: (https://github.com/Geronimo1992/online-cook-book/tree/master/WIREFRAMES)
+Wireframes can be found [here](https://github.com/Geronimo1992/online-cook-book/tree/master/WIREFRAMES)
 
 # Techologies Used
-* [HTML]: (https://www.w3schools.com/html/html_intro.asp) has been used for the structure of the page
-* [CSS]: (https://www.w3schools.com/css/) has been used for styling
-* [CSS]: (https://getbootstrap.com/) has been used for the navigation bar, the grid layout and forms
-* [Python]: (https://www.python.org/) has been used to write the backend code
-* [Flask]: (http://flask.pocoo.org/) has been used to facilitate the backend development
-* [Jinja]: (http://jinja.pocoo.org/) has been used to be able to write logic in the HTML document itself
-* [Mongo Db]: (https://www.mongodb.com/) has been used to store the data of the website
-* [PyMongo]: (https://api.mongodb.com/python/current/) has been used to be able to work with the database from a python file instead of the command line
+* [HTML](https://www.w3schools.com/html/html_intro.asp) has been used for the structure of the page
+* [CSS](https://www.w3schools.com/css/) has been used for styling
+* [CSS](https://getbootstrap.com/) has been used for the navigation bar, the grid layout and forms
+* [Python](https://www.python.org/) has been used to write the backend code
+* [Flask](http://flask.pocoo.org/) has been used to facilitate the backend development
+* [Jinja](http://jinja.pocoo.org/) has been used to be able to write logic in the HTML document itself
+* [Mongo Db](https://www.mongodb.com/) has been used to store the data of the website
+* [PyMongo](https://api.mongodb.com/python/current/) has been used to be able to work with the database from a python file instead of the command line
 
 # Testing
 
-* HTML has been tested on [W3C]: (https://validator.w3.org/nu/#textarea)
-* CSS has been tested on [W3C]: (https://jigsaw.w3.org/css-validator/validator)
-* Python has been tested on [pep8 online check]: (http://pep8online.com/)
-* Testing of every views status code has been done. Testing of user session has also been done. See  [here]: (https://github.com/Geronimo1992/online-cook-book/blob/master/app_tests.py)
+* HTML has been tested on [W3C](https://validator.w3.org/)
+* CSS has been tested on [W3C](https://jigsaw.w3.org/css-validator/)
+* Python has been tested on [pep8 online check](http://pep8online.com/)
+* Testing of every views status code has been done. Testing of user session has also been done. See  [here](https://github.com/Geronimo1992/online-cook-book/blob/master/app_tests.py)
 * Manual tests have been performed as well (checking links, forms, etc)
 
 # deployment
-Code can be found on [Github]: (https://github.com/Geronimo1992/online-cook-book)
-Website has been deployed and can be found on [Heroku]: (https://cookbook-flask-mls.herokuapp.com/)
+* Code can be found on [Github](https://github.com/Geronimo1992/online-cook-book)
+* Website has been deployed and can be found on [Heroku](https://cookbook-flask-mls.herokuapp.com/)
 
 # Credits
 
@@ -46,5 +46,5 @@ Website has been deployed and can be found on [Heroku]: (https://cookbook-flask-
 * During the project i refered to the flask docs as well which have been a huge help
 * A big thank you to my mentor for planning and helping with the projects
 * A big thanks to tutor support for helping me out with many difficult issues.
-* A tutorial has been taken for learning how to use context varibles and sessions on [Youtube]: (https://www.youtube.com/watch?v=eBwhBrNbrNI)
+* A tutorial has been taken for learning how to use context varibles and sessions on [Youtube](https://www.youtube.com/watch?v=eBwhBrNbrNI)
 * Many more resources have been consulted online for advice and python syntax (stackoverflow, pyhton pep8, blogs, etc) so thank you to all the authors!
