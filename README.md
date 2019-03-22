@@ -21,7 +21,7 @@ Wireframes can be found [here](https://github.com/Geronimo1992/online-cook-book/
 # Techologies Used
 * [HTML](https://www.w3schools.com/html/html_intro.asp) has been used for the structure of the page
 * [CSS](https://www.w3schools.com/css/) has been used for styling
-* [CSS](https://getbootstrap.com/) has been used for the navigation bar, the grid layout and forms
+* [Bootstrap](https://getbootstrap.com/) has been used for the navigation bar, the grid layout and forms
 * [Python](https://www.python.org/) has been used to write the backend code
 * [Flask](http://flask.pocoo.org/) has been used to facilitate the backend development
 * [Jinja](http://jinja.pocoo.org/) has been used to be able to write logic in the HTML document itself
