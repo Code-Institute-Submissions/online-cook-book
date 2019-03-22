@@ -1,4 +1,4 @@
-# Interactive Font End Development Milestone Project
+# Data Centric Development Milestone Project
 This an online cookbook that is made for people who like to live a healthy lifestyle but don't necessarly want to eat brocolli and boiled chikcen every day.
 The recipes are made out of alternatives like stevia instead of sugar, olive oil instead of other less heamthy oils, nuts, seeds and many other ingredients are used to replace the traditional ones,
 enjoy!
