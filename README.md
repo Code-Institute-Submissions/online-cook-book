@@ -34,8 +34,17 @@ Wireframes can be found [here]: (https://github.com/Geronimo1992/online-cook-boo
 * CSS has been tested on [W3C]: (https://jigsaw.w3.org/css-validator/validator)
 * Python has been tested on [pep8 online check]: (http://pep8online.com/)
 * Testing of every views status code has been done. Testing of user session has also been done. See  [here]: (https://github.com/Geronimo1992/online-cook-book/blob/master/app_tests.py)
+* Manual tests have been performed as well (checking links, forms, etc)
 
 # deployment
 Code can be found on [Github]: (https://github.com/Geronimo1992/online-cook-book)
-Website has been deployd and can be found on [Heroku]: ()
+Website has been deployed and can be found on [Heroku]: (https://cookbook-flask-mls.herokuapp.com/)
+
 # Credits
+
+* Many times i refered to the python documentation
+* During the project i refered to the flask docs as well which have been a huge help
+* A big thank you to my mentor for planning and helping with the projects
+* A big thanks to tutor support for helping me out with many difficult issues.
+* A tutorial has been taken for learning how to use context varibles and sessions on [Youtube]: (https://www.youtube.com/watch?v=eBwhBrNbrNI)
+* Many more resources have been consulted online for advice and python syntax (stackoverflow, pyhton pep8, blogs, etc) so thank you to all the authors!
