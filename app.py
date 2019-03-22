@@ -132,7 +132,6 @@ def edit_page_form(recipe_id):
     else:
         return redirect(url_for("session_user"))
 
-#edit recipe function
 @app.route('/edit_recipe/<recipe_id>', methods=["POST"])
 def edit_recipe(recipe_id):
     if g.user:
@@ -184,7 +183,6 @@ def show_popular_courses():
         recipes= mongo.db.recipes.find().sort("upvote", -1)
         data = []
         for recipe in recipes:
-            print(recipe)
             data.append({'category_course': recipe['category_course']})
             data.append({'upvote': recipe['upvote']})
         

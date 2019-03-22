@@ -47,8 +47,8 @@ form {
     margin: 1.5rem 0rem 1.5rem 0rem;
 }
 img {
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 /*------width-recipe-page adjusts the size of the images on the recipe.html page so that they always fit their element but here the max-size is higher----*/
